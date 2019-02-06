@@ -1,0 +1,261 @@
+<div class="Invoice">
+
+  <style>
+    #testCard {
+      background: #eee;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #testCard2 {
+      background: rgba(36, 139, 58, 0.8);
+      border-bottom: 1px solid #ddd;
+      color: white;
+      padding: 5px;
+    }
+
+    #testCard3 {
+      background: rgba(36, 139, 58, 0.8);
+      border-bottom: 1px solid #ddd;
+      color: white;
+      padding: 5px;
+    }
+    hr {
+      border: none;
+      height: 1px;
+      /* Set the hr color */
+      color: #000000;
+      /* old IE */
+      background-color: #000000;
+      /* Modern Browsers */
+    }
+
+    img {
+      width: 50%;
+      height: auto;
+    }
+
+    .invoice-box {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      border: 1px solid #eee;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+      font-size: 16px;
+      line-height: 24px;
+      font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+      color: #555;
+    }
+
+    .invoice-box table {
+      width: 100%;
+      line-height: inherit;
+      text-align: left;
+    }
+
+    .invoice-box table td {
+      padding: 5px;
+      vertical-align: top;
+    }
+
+    .invoice-box table tr td:nth-child(2) {
+      text-align: right;
+    }
+
+    .invoice-box table tr.top table td {
+      padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.top table td.title {
+      font-size: 45px;
+      line-height: 45px;
+      color: #333;
+    }
+
+    .invoice-box table tr.information table td {
+      padding-bottom: 40px;
+    }
+
+    .invoice-box table tr.heading td {
+      background: rgba(36, 139, 58, 0.8);
+      border-bottom: 1px solid #ddd;
+      color: white;
+    }
+
+    #approved {
+      color: #248B3A;
+    }
+
+
+    .invoice-box table tr.details td {
+      padding-bottom: 20px;
+    }
+
+    .invoice-box table tbody.item td {
+      border-bottom: 2px solid #eee;
+    }
+
+    .invoice-box table tr.item.last td {
+      border-bottom: none;
+    }
+
+    .invoice-box table tr.total td:nth-child(2) {
+      border-top: 2px solid #bbb;
+      font-weight: bold;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .invoice-box table tr.top table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+
+      .invoice-box table tr.information table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    /** RTL **/
+    .rtl {
+      direction: rtl;
+      font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+
+    .rtl table {
+      text-align: right;
+    }
+
+    .rtl table tr td:nth-child(2) {
+      text-align: left;
+    }
+  </style>
+
+  <div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+      <tr class="top">
+        <td colspan="2">
+          <table>
+            <tr>
+              <td class="title">
+                %%GLOBAL_HeaderLogo%%
+              </td>
+
+
+              <td style="text-align: center;">
+                <p id="testCard2">
+                  %%GLOBAL_InvoiceTitle%%<br />
+                </p>
+                <i>%%GLOBAL_OrderDate%%</i><br />
+
+              </td>
+
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="information">
+        <td colspan="2">
+          <table>
+            <tr>
+              <td style="text-align: center;">
+                <br />
+                <b>The Pool Table Store</b><br />
+                6566 University Blvd.<br />
+                Winter Park, FL 32792<br />
+                <a style="color: black;" target="_blank" href="<a href=" mailto:info@pooltablestore.com?subject=Inquiry">info@pooltablestore.com</a>
+              </td>
+
+              <td id="testCard" style="text-align: center; padding-bottom: 10px; width: 50%;">
+                <i>Customer Info:</i><br>
+                %%GLOBAL_ShippingAddress%%<br />
+                <b>Phone:</b> %%GLOBAL_BillingPhone%%<br />
+                <b>E-mail:</b> %%GLOBAL_BillingEmail%%
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr class="heading">
+        <td>
+          Shipping Carrier
+        </td>
+
+        <td>
+          Method
+        </td>
+      </tr>
+
+      <tr class="details">
+        <td>
+          USPS
+        </td>
+
+        <td>
+          %%GLOBAL_ShippingMethod%%
+        </td>
+      </tr>
+
+
+
+      <tr class="heading">
+        <td>
+          Payment Method
+        </td>
+
+        <td>
+          Status
+        </td>
+      </tr>
+
+      <tr class="details">
+        <td>
+          %%GLOBAL_PaymentMethod%%
+        </td>
+
+        <td id="approved">
+          Approved
+        </td>
+      </tr>
+
+      <tr class="heading">
+        <td>
+          Order Summary
+        </td>
+
+        <td>
+          Cost
+        </td>
+      </tr>
+
+      <div>
+
+        <table class="InvoiceTable">
+          <thead>
+            <tr>
+
+              <th class="ProductQuantity">%%LNG_Quantity%%</th>
+              <th class="ProductSku">%%LNG_Code%%</th>
+              <th class="ProductDetails">%%LNG_ProdName%%</th>
+              <th class="ProductCost" align="right">Price</th>
+              <th class="ProductTotal" align="right">Amount Paid</th>
+            </tr>
+          </thead>
+
+          <tbody class="item" style="border-bottom: 1px solid #000000;">
+            %%GLOBAL_ProductsTable%%
+          </tbody>
+
+
+          <tbody id="testCard" class="InvoiceTotals" style="color: black;">
+            %%GLOBAL_totals%%
+          </tbody>
+        </table>
+      </div>
+
+    </table>
+  </div>
+</div>
